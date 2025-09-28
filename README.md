@@ -1,16 +1,43 @@
-# React + Vite
+# IELTS Application – Modern Responsive IELTS Prep Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+IELTS Application is a clean, professionally designed responsive web application for IELTS (International English Language Testing System) preparation. It offers a smooth user experience on all devices and a premium, app-like feel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Tech Stack:** React, Tailwind CSS
+- **Brand:** Custom-designed app logo and favicon for a unique, trustworthy presence
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Modern Hero Section:** Stands out with compelling headline, expert tagline, and bold "Start Learning" CTA. Responsive image and gradient overlays for engagement.
+- **Floating Features Box:** Showcases key offerings (Speaking Practice, Mock Tests, AI Band Score, Expert Tutors) in a visually appealing, clickable, horizontal "card" layout. Instantly navigates to corresponding info sections.
+- **Testimonials:** Live feedback from real users/mentors, displayed as elegant cards. On desktop, user name and post appear as tooltips when hovering over their photo for a refined, interactive feel.
+- **Deep IELTS Section:** Each feature (Speaking, Mock, AI, Tutors) has an extended, professional description and visuals, supporting adaptive layout for mobile/tablet/PC.
+- **Footer:** Brand, mission statement, and company/legal/service links are cleanly arranged—always fully centered and readable on mobile.
 
-## Expanding the ESLint configuration
+## Design and UX Approach
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Fully Responsive:** Every component and layout gracefully adapts for large desktop screens, tablets, and mobile.
+- **Glassmorphism and Shadows:** Key overlays use glassy, blurred backgrounds and modern drop shadows, especially in navbar and mobile menus.
+- **Animated Mobile Menu:** Hamburger icon smoothly morphs into a cross. Mobile dropdown menu is glassy, right-aligned, and never covers main content.
+- **Accessible:** All images include alt text. Buttons are keyboard and screen reader friendly.
+
+## Custom Branding
+
+- **Personalized Logo and Favicons:** The application includes original logo artwork and matching favicon, ensuring a professional, ownable digital identity.
+- **No Generic Assets:** Every visual is tailored for IELTS Application—no default or stock branding.
+
+## How to Run
+
+1. Clone the repo and install dependencies.
+2. Place your `logo.png` and `favicon.ico` (provided separately) in the `/assets` directory.
+3. Start the development server with `npm start` or `yarn start`.
+4. Enjoy your optimized, fully-responsive IELTS Application UI!
+
+## License
+
+MIT
+
+---
+
+IELTS Application © 2025 – All rights reserved.
