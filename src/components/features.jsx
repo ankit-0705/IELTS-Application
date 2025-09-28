@@ -1,33 +1,40 @@
-import { FaComments, FaClipboardList, FaRobot, FaUserGraduate } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import { FaComments, FaClipboardList, FaRobot, FaUserGraduate } from "react-icons/fa";
 
 const features = [
   {
     icon: <FaComments className="text-2xl sm:text-3xl text-indigo-900" />,
     title: "Speaking Practice",
     id: "speaking-practice",
-    shortDesc: "Interactive sessions & instant feedback"
+    shortDesc: "Interactive sessions & instant feedback",
   },
   {
     icon: <FaClipboardList className="text-2xl sm:text-3xl text-indigo-900" />,
     title: "Mock Tests",
     id: "mock-tests",
-    shortDesc: "Simulate real IELTS, track progress"
+    shortDesc: "Simulate real IELTS, track progress",
   },
   {
     icon: <FaRobot className="text-2xl sm:text-3xl text-indigo-900" />,
     title: "AI Band Score",
     id: "ai-band-score",
-    shortDesc: "Automated scoring, targeted advice"
+    shortDesc: "Automated scoring, targeted advice",
   },
   {
     icon: <FaUserGraduate className="text-2xl sm:text-3xl text-indigo-900" />,
     title: "Expert Tutors",
     id: "expert-tutors",
-    shortDesc: "Learn from IELTS certified experts"
+    shortDesc: "Learn from IELTS certified experts",
   },
 ];
 
 const Features = () => {
+  const [animate, setAnimate] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimate(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleScrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -36,7 +43,12 @@ const Features = () => {
   };
 
   return (
-    <div className="flex flex-wrap sm:flex-nowrap justify-center gap-5 sm:gap-8 p-4 sm:p-6 lg:p-8  rounded-2xl  w-full max-w-[90vw] sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
+    <div
+      className={`flex flex-wrap sm:flex-nowrap justify-center gap-5 sm:gap-8 p-4 sm:p-6 lg:p-8  rounded-2xl  w-full max-w-[90vw] sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto
+        transition-all duration-700 ease-out
+        ${animate ? "opacity-100 scale-100" : "opacity-0 scale-90"}
+      `}
+    >
       {features.map((feature, idx) => (
         <div
           key={idx}
@@ -46,13 +58,15 @@ const Features = () => {
           role="button"
           tabIndex={0}
           onKeyPress={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+            if (e.key === "Enter" || e.key === " ") {
               handleScrollToSection(feature.id);
             }
           }}
         >
           {feature.icon}
-          <span className="mt-3 text-base sm:text-lg font-medium text-black text-center">{feature.title}</span>
+          <span className="mt-3 text-base sm:text-lg font-medium text-black text-center">
+            {feature.title}
+          </span>
           <p className="text-xs sm:text-sm text-gray-500 mt-2 text-center">{feature.shortDesc}</p>
         </div>
       ))}

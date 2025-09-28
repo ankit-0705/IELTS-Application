@@ -1,8 +1,14 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimate(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleNav = (id) => {
     setNavOpen(false);
@@ -16,10 +22,11 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`absolute top-0 left-0 w-full z-30 bg-transparent transition-colors duration-500`}
+      className={`absolute top-0 left-0 w-full z-30 bg-transparent transition-opacity duration-700 ease-out
+        ${animate ? "opacity-100" : "opacity-0"}`}
     >
       <div className="flex items-center justify-between px-4 sm:px-8 md:px-12 py-3 sm:py-4">
-        {/* Logo / Title */}
+        {/* Logo */}
         <div
           className="flex items-center cursor-pointer"
           onClick={() => handleNav("top")}
@@ -57,32 +64,26 @@ const Navbar = () => {
             aria-label="Toggle Navigation"
             className="outline-none focus:outline-none relative w-8 h-8"
           >
-            <span className="absolute block h-0.5 w-6 bg-white rounded transition-transform duration-300 ease-in-out top-2 left-1"
-              style={{
-                transform: navOpen
-                  ? "rotate(45deg) translateY(6px) translateX(6px)"
-                  : "rotate(0deg)",
-              }}
+            <span
+              className={`absolute block h-0.5 w-6 bg-white rounded transition-transform duration-300 ease-in-out top-2 left-1 ${
+                navOpen ? "rotate-45 translate-y-2 translate-x-1" : ""
+              }`}
             />
-            <span className="absolute block h-0.5 w-6 bg-white rounded transition-opacity duration-300 ease-in-out top-4 left-1"
-              style={{
-                opacity: navOpen ? 0 : 1,
-              }}
+            <span
+              className={`absolute block h-0.5 w-6 bg-white rounded transition-opacity duration-300 ease-in-out top-4 left-1 ${
+                navOpen ? "opacity-0" : "opacity-100"
+              }`}
             />
-            <span className="absolute block h-0.5 w-6 bg-white rounded transition-transform duration-300 ease-in-out top-6 left-1"
-              style={{
-                transform: navOpen
-                  ? "rotate(-45deg) translateY(-6px) translateX(6px)"
-                  : "rotate(0deg)",
-              }}
+            <span
+              className={`absolute block h-0.5 w-6 bg-white rounded transition-transform duration-300 ease-in-out top-6 left-1 ${
+                navOpen ? "-rotate-45 -translate-y-2 translate-x-1" : ""
+              }`}
             />
           </button>
 
-          {/* Right-aligned Dropdown Menu */}
+          {/* Right-aligned Dropdown */}
           {navOpen && (
-            <div
-              className="absolute top-12 right-0 bg-white/40 backdrop-blur-xl rounded-xl shadow-2xl p-3 w-40 flex flex-col gap-2 z-50"
-            >
+            <div className="absolute top-12 right-0 bg-white/40 backdrop-blur-xl rounded-xl shadow-2xl p-3 w-40 flex flex-col gap-2 z-50">
               <button
                 className="py-2 px-4 rounded text-base font-medium text-[#181f3b] hover:bg-white hover:bg-opacity-30 transition text-left"
                 onClick={() => handleNav("features")}

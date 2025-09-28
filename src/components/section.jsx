@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import band_score from '../assets/band-score.png';
 import mock_test from '../assets/Mock-Test.webp';
 
@@ -34,37 +35,58 @@ const features = [
   },
 ];
 
-const Sections = () => (
-  <div className="max-w-6xl mx-auto py-8 sm:py-16 space-y-14 sm:space-y-20 px-3 sm:px-6" id='features'>
+const Sections = () => {
+  const [animate, setAnimate] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimate(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="max-w-6xl mx-auto py-8 sm:py-16 space-y-14 sm:space-y-20 px-3 sm:px-6" id="features">
       <div className="text-center mb-8">
         <h2 className="text-2xl sm:text-4xl font-bold mb-2 text-black">Features</h2>
         <span className="block w-10 h-1 mx-auto bg-gray-300 rounded"></span>
       </div>
-    {features.map((feature, index) => {
-      const isEven = index % 2 === 0;
-      return (
-        <div
-          key={index}
-          id={feature.id}
-          className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-6 sm:gap-10 scroll-mt-24`}
-        >
-          {/* Text */}
-          <div className="md:w-1/2 text-center md:text-left px-2 sm:px-4">
-            <h3 className="text-xl sm:text-3xl font-semibold mb-2 sm:mb-4 text-black">{feature.title}</h3>
-            <p className="text-gray-700 text-base sm:text-lg">{feature.description}</p>
+      {features.map((feature, index) => {
+        const isEven = index % 2 === 0;
+        return (
+          <div
+            key={index}
+            id={feature.id}
+            className={`flex flex-col ${
+              isEven ? "md:flex-row" : "md:flex-row-reverse"
+            } items-center gap-6 sm:gap-10 scroll-mt-24
+              transition-all duration-800 ease-out
+              ${
+                animate
+                  ? "opacity-100 translate-x-0"
+                  : isEven
+                  ? "opacity-0 -translate-x-10"
+                  : "opacity-0 translate-x-10"
+              }
+            `}
+          >
+            <div className="md:w-1/2 text-center md:text-left px-2 sm:px-4">
+              <h3 className="text-xl sm:text-3xl font-semibold mb-2 sm:mb-4 text-black">
+                {feature.title}
+              </h3>
+              <p className="text-gray-700 text-base sm:text-lg">
+                {feature.description}
+              </p>
+            </div>
+            <div className="md:w-1/2 w-full">
+              <img
+                src={feature.image}
+                alt={feature.title}
+                className="w-full rounded-lg shadow-lg object-cover max-h-52 sm:max-h-80 mx-auto transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer"
+              />
+            </div>
           </div>
-          {/* Image */}
-          <div className="md:w-1/2 w-full">
-            <img
-              src={feature.image}
-              alt={feature.title}
-              className="w-full rounded-lg shadow-lg object-cover max-h-52 sm:max-h-80 mx-auto transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer"
-            />
-          </div>
-        </div>
-      );
-    })}
-  </div>
-);
+        );
+      })}
+    </div>
+  );
+};
 
 export default Sections;
