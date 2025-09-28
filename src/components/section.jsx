@@ -1,4 +1,3 @@
-import React from 'react';
 import band_score from '../assets/band-score.png';
 import mock_test from '../assets/Mock-Test.webp';
 

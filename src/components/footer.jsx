@@ -1,10 +1,8 @@
-import React from "react";
 import logo from "../assets/logo.png";
 
 const FooterSection = () => (
   <footer id="footer" className="w-full bg-gray-700 py-8 sm:py-12 px-3 sm:px-6">
     <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
-      {/* Brand - always centered on mobile */}
       <div className="flex flex-col items-center md:items-start mb-6 md:mb-0 w-full md:w-auto text-center md:text-left">
         <img src={logo} alt="IELTS Logo" className="mx-auto md:mx-0 w-14 h-14 sm:w-20 sm:h-20 mb-3" />
         <p className="text-white text-lg font-semibold mb-1">IELTS Application</p>

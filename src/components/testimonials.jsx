@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 
 const testimonials = [
   {
@@ -16,7 +15,6 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  const [hovered, setHovered] = useState(null);
 
   return (
     <section className="py-10 sm:py-16 bg-[#f5f7f9]">

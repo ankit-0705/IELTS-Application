@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import studentBg from "../assets/student.png";
 import Navbar from "./navbar";
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaComments, FaClipboardList, FaRobot, FaUserGraduate } from 'react-icons/fa';
 
 const features = [
